@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Balance</title>
+    </head>
+    <body>
+        <div>Replying to {{account.email}}</div>
+        <div>Hello {{account.name}} your current balance is {{account.budget}}</div>
+        <form action="{{url_for('account')}}" method="POST">
+            <div>Name</div>
+            <input type="text" name="name" id="iname">
+            <div>Amount</div>
+            <input type="number" name="amount" id="iamount">
+            <input type="submit" name="sub" id="isub">
+        </form>
+        
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+    </head>
+    <body class="background">
+        <form action="{{url_for('account')}}"  method="POST">
+            <div class="name">Name</div>
+            <input class="input1" type="text" id="name" name="name">
+            <div class="email">Email Id</div>
+            <input class="input2" type="email" id="email" name="email">
+            <input class="submit" type="submit" value="Submit">
+    </body>
+</html>

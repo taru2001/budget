@@ -1,0 +1,98 @@
+.background{
+    background-image: url(https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMDk0fQ&w=1000&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.name{
+    text-align: center;
+    color: navy;
+    font-weight: bolder;
+    font-size: 6em;
+    position: relative;
+    top: 30px;
+}
+
+.input1{
+    position: absolute;
+    left: 30%;
+    width: 35em;
+    height: 3em;
+    top: 180px;
+    text-align: center;
+    font-size: larger;
+    border-color: black;
+
+}
+
+.email{
+    text-align: center;
+    color: navy;
+    font-weight: bolder;
+    font-size: 6em;
+    position: relative;
+    top: 150px;
+}
+
+.input2{
+    position: absolute;
+    left: 30%;
+    top: 400px;
+    width: 35em;
+    height: 3em;
+    text-align: center;
+    font-size: larger;
+    border-color: black;
+}
+
+.submit{
+    position: absolute;
+    left: 45%;
+    top: 70%;
+    height: 3em;
+    width: 8em;
+    background-color: black;
+    font-size: larger;
+    color: aliceblue;
+    font-weight: bolder;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+}
+
+
+.submit span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.submit span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.submit:hover span {
+    padding-right: 25px;
+  }
+  
+.submit:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.budget{
+    position: relative;
+    font-size: xx-large;
+    font-family: cursive;
+    color: navy;
+}
+
+.input3{
+    position: relative;
+}

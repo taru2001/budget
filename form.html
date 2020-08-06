@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Sign in</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+    </head>
+    <body class="background">
+        <form action="{{url_for('sign')}}"  method="POST">
+            <div class="name">Name</div>
+            <input class="input1" type="text" id="name" name="name">
+            <div class="email">Email Id</div>
+            <input class="input2" type="email" id="email" name="email">
+            <input class="submit" type="submit" value="Submit">
+            <div class="budget">Budget</div>
+            <input class="input3" type="number" id="bud" name="bud">
+        </form>
+    </body>
+</html>
