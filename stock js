@@ -1,0 +1,112 @@
+const crypto=["BTC","LTC","ETH","NEO","BNB","QTUM","EOS","SNT"];
+// let url="wss://stream.binance.com:9443/ws/ethusdt@trade";
+let url="https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD";
+let history_url = "https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=USD&limit=1440";
+
+let all_candles=[];
+
+let reset=0;
+let chart;
+let lineSeries;
+
+
+$(document).ready(function(){
+
+    add_history();
+
+
+    var rateP = document.getElementById('rate');
+
+    chart = LightweightCharts.createChart(document.getElementById('chart'),
+        {   width: 1000, 
+            height: 400
+        }
+     );
+    lineSeries = chart.addLineSeries(
+        {
+            drawCrosshairMarker: true,
+            lineWidth : 2,
+            color: 'black',
+        }
+    );
+
+
+    chart.applyOptions({
+        timeScale: {
+            rightOffset:50,
+            tickMarkFormatter: (time, tickMarkType, locale) => {
+                let date = new Date(time*1000);
+                const year = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds(); 
+                // console.log(year);
+                
+                return String(year);
+            },
+        },
+    });
+
+    addPoint();
+        setInterval(()=>{
+            addPoint();
+        },15000);
+
+});
+
+
+async function add_history(){
+    const response = await fetch(history_url);
+    var dataRes = await response.json();
+    var data = dataRes.Data.Data;
+
+    // data.reverse();
+
+    // console.log(data.Data.Data);
+    console.log(data.length);
+
+    let take=0;
+    for(let i=0;i<data.length;i++)
+    {
+        if(take==0)
+        {
+            let candle=data[i];
+            var newDate = new Date();
+            var curtime =  candle.time;  
+            let newCandle = {time:curtime , value:candle.close};
+            all_candles.push(newCandle);
+            lineSeries.setData(all_candles);
+            // take++;
+        }
+        
+        if(take==10)
+        take=0;
+       
+    }
+
+    // console.log();
+
+    //  all_candles.push(newCandle);
+    //  console.log(all_candles.length);
+    //  lineSeries.setData(all_candles);
+
+}
+
+
+async function addPoint(){
+
+    console.log(all_candles.length);
+
+    const response = await fetch(url);
+    var data = await response.json();
+
+    console.log(data.USD);
+
+    var newDate = new Date();
+    var curtime =  newDate.getTime()/1000;  
+    let newCandle = {time:curtime , value:data.USD};
+
+    console.log(curtime);
+    all_candles.push(newCandle);
+    
+    lineSeries.setData(all_candles);
+
+
+}
