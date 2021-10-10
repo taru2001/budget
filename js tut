@@ -1,0 +1,7 @@
+console.log("hi")
+var x;
+var ch;
+x = "taru";
+ch = "smart";
+
+console.log(x,ch)
