@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int t) {
+        int n=nums.size();
+        unordered_map<int,int>m;
+        int k,j;
+        for(int i=0;i<n;i++){
+            if(m[t-nums[i]]){
+                k=t-nums[i];
+                j=i;
+                break;
+            }
+            m[nums[i]]++;
+        }
+        for(int i=0;i<n;i++){
+            if(nums[i]==k) return{i,j};
+        }
+        
+        return {};
+    }
+};
