@@ -1,0 +1,23 @@
+class Solution {
+public:
+    void tra(vector<vector<int>>&m){
+        for(int i=0;i<m.size();i++){
+            for(int j=0;j<m[i].size();j++){
+                if(j>=i)continue;
+                swap(m[i][j],m[j][i]);
+            }
+        }
+        return;
+    }
+    void rev(vector<vector<int>>&m){
+        for(int i=0;i<m.size();i++){
+            reverse(m[i].begin(),m[i].end());
+        }       
+        return;
+    }
+    void rotate(vector<vector<int>>& matrix) {
+        tra(matrix);
+        rev(matrix);
+        return;
+    }
+};
