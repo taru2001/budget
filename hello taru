@@ -1,0 +1,23 @@
+class Solution {
+public:
+    TreeNode* bst(vector<int>pr,int *idx,int key,int min,int max){
+        if(*idx>=pr.size())return NULL;
+        TreeNode* root=NULL;
+        if(key>min && key<max){
+            root=new TreeNode(key);
+            *idx+=1;
+            
+            if(*idx<pr.size()){
+                root->left=bst(pr,idx,pr[*idx],min,key);
+            }
+            if(*idx<pr.size()){
+                root->right=bst(pr,idx,pr[*idx],key,max);
+            }
+        }
+        return root;
+    }
+    TreeNode* bstFromPreorder(vector<int>& pr) {
+        int idx=0;
+        return bst(pr,&idx,pr[0],INT_MIN,INT_MAX);
+    }
+};
